@@ -1,10 +1,13 @@
 {
-  "name": "storybook-vue3-tailwind",
-  "version": "0.0.0",
+  "name": "sb-unimestre-components",
+  "private": false,
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview --port 5050"
+    "build": "cross-env BABEL_ENV=production babel src -d dist",
+    "preview": "vite preview --port 5050",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "pinia": "^2.0.13",
@@ -12,7 +15,28 @@
     "vue-router": "^4.0.14"
   },
   "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.2",
+    "@storybook/addon-actions": "^6.5.5",
+    "@storybook/addon-essentials": "^6.5.5",
+    "@storybook/addon-interactions": "^6.5.5",
+    "@storybook/addon-links": "^6.5.5",
+    "@storybook/builder-vite": "^0.1.35",
+    "@storybook/testing-library": "^0.0.11",
+    "@storybook/vue3": "^6.5.5",
     "@vitejs/plugin-vue": "^2.3.1",
-    "vite": "^2.9.5"
+    "babel-loader": "^8.2.5",
+    "babel-preset-vue": "^2.0.2",
+    "cross-env": "^7.0.3",
+    "vite": "^2.9.5",
+    "vue-loader": "^16.8.3"
+  },
+  "babel": {
+    "presets": [
+      ["vue", {
+        "eventModifiers": false,
+        "absoluteRuntime": false
+      }]
+    ]
   }
 }
